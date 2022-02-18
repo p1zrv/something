@@ -4,7 +4,7 @@ import atomchtools as at
 import havsfunc
 import rekt
 
-source = core.dgdecodenv.DGSource(r"F:\[1] bea\Encode\Video\ncha 1\ep1.dgi").std.Trim(0,44277)
+source = core.dgdecodenv.DGSource(r"ep1.dgi").std.Trim(0,44277)
 source = core.std.Crop(source,6,0,0,0)
 source = rekt.rektlvls(source,colnum=[0,1,711,712,713],colval=[-4,10,10,-5,5])
 
