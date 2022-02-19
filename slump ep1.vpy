@@ -18,7 +18,7 @@ def smthfunc(clip: vs.VideoNode) -> vs.VideoNode:
     clip16 = core.fmtc.bitdepth(clip, bits=16)
     debl = havsfunc.Deblock_QED(clip16, quant1=18, quant2=20, aOff1=1, bOff1=2, aOff2=1, bOff2=2, uv=3)
     dft = core.dfttest.DFTTest(debl, sigma=3, tbsize=5, opt=3, planes=[0,1,2])
-    addgra = havsfunc.GrainFactory3(dft, g1str=1.3, g2str=4.5, g3str=5.5, g1shrp=40, g2shrp=50, g3shrp=60)
+    addgra = havsfunc.GrainFactory3(dft, g1str=0.7, g2str=2, g3str=2.5, g1shrp=20, g2shrp=40, g3shrp=40)
     Mask = at.retinex_edgemask(clip16, sigma=0.7, draft=False, opencl=True)
     filtered = core.std.MaskedMerge(addgra, clip16, Mask, planes=[0,1,2], first_plane=True)
     clip_dendeb = core.fmtc.bitdepth(filtered, bits=10)
